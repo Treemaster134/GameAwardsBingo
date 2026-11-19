@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BINGO!!!!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Game Awards bingo</h1>
+
+    <div class="container">
+ 
+        
+        <div class="row">
+            <div class="column">
+                <img id="tile0" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile1" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile2" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile3" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile4" src="images/blank.png" onclick="onPress(this)">
+            </div>
+            <div class="column">
+                <img id="tile5" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile6" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile7" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile8" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile9" src="images/blank.png" onclick="onPress(this)">
+            </div>
+            <div class="column">
+                <img id="tile10" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile11" src="images/blank.png" onclick="onPress(this)">
+                <img id="FREE" src="images/blank.png" style="background-image: url(images/FREE.png);" onclick="onPress(this)">
+                <img id="tile12" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile13" src="images/blank.png" onclick="onPress(this)">
+            </div>
+            <div class="column">
+                <img id="tile14" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile15" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile16" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile17" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile18" src="images/blank.png" onclick="onPress(this)">
+            </div>
+            <div class="column">
+                <img id="tile19" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile20" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile21" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile22" src="images/blank.png" onclick="onPress(this)">
+                <img id="tile23" src="images/blank.png" onclick="onPress(this)">
+            </div>
+        </div>
+        
+    </div>
+
+    <h1 id="aiCounter">AI COUNTER: 0</h1>
+    <button onclick="increaseCounter(0)"><h1>ANOTHER ONE</h1></button>
+
+    <h1 id="asianSoulsLikeCounter">ASIAN SOULS LIKE COUNTER: 0</h1>
+    <button onclick="increaseCounter(1)"><h1>ANOTHER ONE</h1></button>
+        
+    <script>
+        let tileIndices = [];
+        let tileImages = [];
+        let aiCounterElement = document.getElementById("aiCounter");
+        let soulsCounterElement = document.getElementById("asianSoulsLikeCounter");
+
+        let aiCounter = 0;
+        let soulsCounter = 0;
+
+        for (let i = 0; i < 24; i++)
+        {
+            tileIndices.push(i);
+            tileImages.push(document.getElementById(`tile${i}`));
+        }
+
+        function shouldSwap()
+        {
+            return Math.random() > 0.5;
+        }
+        
+        for(let j = 0; j < 24; j++)
+        {
+            for(let i = 1; i < 24; i++)
+            {
+                if(shouldSwap())
+                {
+                    [tileIndices[i], tileIndices[j]] = [tileIndices[j], tileIndices[i]]
+                }
+            }
+        }
+
+
+        for (let i = 0; i < 24; i++)
+        {
+            let src = `images/${tileIndices[i]}.png`;
+            tileImages[i].style.backgroundImage = `url('${src}')`;
+        }
+
+        function onPress(element)
+        {
+            if(element.src.includes("blank.png"))
+            {
+                element.src = "images/x.png";
+            }
+            else
+            {
+                element.src = "images/blank.png";
+            }
+        }
+
+        function increaseCounter(id)
+        {
+            if (id === 0)
+            {
+                aiCounter++;
+                aiCounterElement.innerText = `AI COUNTER: ${aiCounter}`
+            }
+            else if (id === 1)
+            {
+                soulsCounter++;
+                soulsCounterElement.innerText = `ASIAN SOULS LIKE COUNTER: ${soulsCounter}`
+            }
+        }
+        
+    </script>
+</body>
+</html>

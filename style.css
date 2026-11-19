@@ -1,0 +1,55 @@
+body {
+    background-color: lightblue;
+}
+
+
+h1, h2, button{
+    font-family: "Papyrus", "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.container{
+    display: flex;
+    justify-content: left;
+    background-image: url(images/split.webp);
+    background-repeat: no-repeat;
+    background-size: 60vw;
+    padding-top: 6vw;
+    padding-bottom: 10vw;
+    padding-left: 6vw;
+}
+
+img {
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+table, th, td{
+    
+    border: 1px solid black;
+}
+
+th,td
+{
+    background-color: white;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  max-width: 5.5vw;
+  padding: 0.25vw;
+}
+
+.column img {
+  vertical-align: middle;
+  width: 5.5vw;
+}
+
+button{
+    min-width: 25vw;
+    min-height: 5vw;
+}
